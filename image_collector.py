@@ -85,7 +85,10 @@ def main(args):
 
         print(f"Downloading image {download_name}.", end=" ")
         try:
-            urllib.request.urlretrieve(url, download_path)
+            #urllib.request.urlretrieve(url, download_path)
+            data = urllib.request.urlopen(url, timeout=15).read()
+            with open(download_path, mode="wb") as f:
+                f.write(data)
             cprint("Successful.", "green")
         except urllib.error.HTTPError:
             cprint("Failed. (HTTP Error)", "yellow")
