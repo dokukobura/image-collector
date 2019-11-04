@@ -99,6 +99,10 @@ def main(args):
             cprint("Failed. (Encoding Error)", "yellow")
             download_errors.append(i + 1)
             continue
+        except:
+            cprint("Failed. (Unknown Error)", "yellow")
+            download_errors.append(i + 1)
+            continue
 
     cprint("Download complete.", "blue")
 
